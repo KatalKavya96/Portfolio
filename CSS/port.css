@@ -1,0 +1,736 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", serif;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+  margin: 0;
+}
+
+body::before {
+  margin:0;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../Images/pc.jpg"); /* Path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(1px); /* Adjust the blur intensity as needed */
+  z-index: -1; /* Keeps the background behind the content */
+  pointer-events: none; /* Allows interactions to pass through */
+}
+
+
+.parent {
+    position: relative;
+    height: 100vh;
+  }
+
+.image1 {
+    position: relative;
+    width:500px;
+    height:450px;
+    transform: translateY(200px);
+    margin-left: 70px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #0b131c
+    
+}
+
+
+
+
+
+.image1:hover{
+    box-shadow: 0 5px 15px #000080;
+}
+
+
+.image2 {
+    position: absolute;
+    opacity: 15%;
+  }
+
+.content{
+    transform: translateY(-530px);
+    margin-left: 46%;
+    font-size: 20px;
+    display: flex;
+
+}
+
+.heading{
+    margin-top: 10px;
+    font-size: 50px;
+}
+
+.gradient-text{
+    background: #121FCF;
+    background: linear-gradient(to right, #121fcf 0%, #7184ff 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.icons{
+    transform: translateY(-525px);
+    margin-left: 46%;
+    font-size: 35px;
+    margin-top: 10px;
+}
+
+.icons a {
+    text-decoration: none;
+}
+
+#events {
+    padding: 6rem;
+    text-align: center;
+    color: #ffffff; /* White text color */
+    opacity: 100%;
+    transform: translateY(-500px);
+    height:1900px;
+  }
+  
+  .space-title {
+    font-size: 2em;
+    color: #ffffff; /* Pure white for contrast */
+    margin-bottom: 1rem; /* Space below the title */
+  }
+  
+  #events-container {
+    margin-top: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Spacing between each card */
+    opacity:98%;
+  }
+  
+  .carousel-slide {
+    opacity: 0; /* Start hidden for entry animation */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Slower entry/exit duration */
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 10px; /* Sharper edges for cards */
+    background: linear-gradient(135deg, #0d1624, #1a2535); /* Gradient based on #0b131c */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle white glow */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Animated light border on edges of the card */
+  .carousel-slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(90deg, 
+      rgba(255, 255, 255, 0) 0%, 
+      rgba(255, 255, 255, 0.5) 50%, 
+      rgba(255, 255, 255, 0) 100%); /* Shimmering light effect */
+    background-size: 200% 200%;
+    animation: flowing-light 3s linear infinite; /* Infinite flowing animation */
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  @keyframes flowing-light {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+  
+  /* Image border with flowing light effect */
+  .carousel-background {
+    width: 40%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 1.5rem;
+    background-clip: content-box;
+    position: relative;
+    height:300px;
+  }
+  
+  .carousel-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    padding: 2px;
+    background: linear-gradient(90deg, 
+      rgba(255, 255, 255, 0) 0%, 
+      rgba(255, 255, 255, 0.5) 50%, 
+      rgba(255, 255, 255, 0) 100%); /* Same shimmering light effect as card */
+    background-size: 200% 200%;
+    animation: flowing-light 3s linear infinite; /* Same animation for consistency */
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .card.left {
+    transform: translateX(-100px); /* Start from the left for entry */
+  }
+  
+  .card.right {
+    transform: translateX(100px); /* Start from the right for entry */
+  }
+  
+  .carousel-slide.in-view.left {
+    transform: translateX(0); /* Slide in from left */
+    opacity: 1;
+  }
+  
+  .carousel-slide.in-view.right {
+    transform: translateX(0); /* Slide in from right */
+    opacity: 1;
+  }
+  
+  .carousel-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above the animated border */
+    padding: 1rem;
+    color: #ffffff; /* White for high contrast on dark background */
+    text-align: left;
+  }
+  
+  .carousel-title {
+    font-size: 1.6em;
+    color: #e0e0e0; /* Light gray for contrast */
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel-description {
+    font-size: 1em;
+    color: #b0b0b0; /* Subtle gray for a soft contrast */
+  }
+
+
+  header {
+    background: #0b131c;
+    color: #fff;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0.95;
+    
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+nav a:hover {
+    color: #ccc;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color:#0b131c; */
+    height:100px;
+    margin-right: 250px;
+}
+
+.navbar h1 {
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ccc;
+}
+
+/* Responsive Design for Desktop */
+@media (min-width: 1024px) {
+    .navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+#flexbar {
+    padding: 24px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 40px;
+    opacity: 0.8;
+    transform: translateX(320px);
+   
+}
+
+.nav-links{
+    align-items: start;
+}
+
+
+#flexbar:hover{
+    align-items: center;
+    padding:25px;
+    border-style:solid;
+    border-width:0.5px;
+    border-radius:40px;
+}
+
+#navid{
+    margin:0px;
+    width:100%;
+    position: fixed;
+}
+
+#Intro{
+  display: grid;
+  background-color: #ffffff;
+  background-image: linear-gradient(#e0e0e0 1px, transparent 1px), linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+  background-size: 40px 40px; 
+  padding: 20px;
+  height: 800px;
+}
+
+/* General styling for the content */
+
+
+/* Typing Effect Styles */
+.typing {
+  overflow: hidden; /* Hides the text overflow */
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  border-right: 3px solid; /* Creates a blinking cursor effect */
+  animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Blinking cursor animation */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+/* Gradient text styling */
+.gradient-text {
+  background: linear-gradient(90deg, #4b6cb7, #182848);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* General Title Styling */
+.title {
+  margin: 50px 0;
+  font-size: 2.5em;
+  color: #333;
+  text-align: center;
+}
+
+/* Timeline Container Styling */
+.timeline-container {
+  overflow-x: auto; /* Allow horizontal scrolling */
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  width: 100%;
+  white-space: nowrap; /* Prevent line breaks between items */
+}
+
+/* Timeline Flex Container */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between items */
+  min-width: 100%; /* Ensure the timeline takes up full width */
+}
+
+/* Timeline Item Styling */
+.timeline-item {
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  opacity: 0; /* Initially hidden */
+  transform: scale(0.8) translateX(50px); /* Start off-screen and scaled down */
+  transition: opacity 0.6s ease, transform 0.6s ease-out;
+}
+
+.timeline-item .content {
+  border: 2px solid black;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.timeline-item.active {
+  opacity: 1; /* Fade in */
+  transform: scale(1) translateX(0); /* Pop up to original size and position */
+}
+
+.timeline-item .content:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.3);
+}
+
+.timeline-item .content h3 {
+  color: #007bff;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.timeline-item .content p {
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.timeline-item .content:hover h3 {
+  color: #0056b3;
+}
+
+.timeline-item .content:hover p {
+  color: #333;
+}
+
+/* Connector Line Styling */
+.connector-line {
+  width: 50px;
+  height: 4px;
+  background-color: #007bff;
+  border-radius: 2px;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.connector-line.active {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+
+.carousel-card.left::after {
+  opacity:98%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.5) 50%, 
+    rgba(255, 255, 255, 0) 100%); /* Shimmering light effect */
+  background-size: 200% 200%;
+  animation: flowing-light 3s linear infinite; /* Infinite flowing animation */
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes flowing-light {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+
+carousel-card.right::after {
+  content: "";
+  opacity: 98%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.5) 50%, 
+    rgba(255, 255, 255, 0) 100%); /* Shimmering light effect */
+  background-size: 200% 200%;
+  animation: flowing-light 3s linear infinite; /* Infinite flowing animation */
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes flowing-light {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+#breaker{
+  width: 100%;
+  height:200px;
+}
+
+footer {
+  background: #0b131c;
+  color: #fff;
+  text-align: center;
+  
+}
+
+#bluetick{
+  height:40px;
+  width:40px;
+  transform: translateY(10px);
+}
+
+.badge-container {
+  transform: translateX(600px);
+  width:80%;
+  height:auto;
+  position: relative;
+  display: inline-block;
+  width: 100%;       /* Full width in container */
+  max-width: 300px;  /* Set a max width for the badge */
+  margin: 0 auto;    /* Center the badge */
+  border-radius: 10px;
+  overflow: hidden;  /* Ensure the shimmer effect stays within the badge */
+}
+
+/* Badge Image Styling */
+.badge-image {
+
+  width: 100%;
+  height: auto;
+  /* display: block; */
+}
+
+/* Shimmering Effect */
+.badge-container::before {
+  content: "";
+  opacity: 0.98;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%
+  ); /* Shimmering light effect */
+  background-size: 200% 200%;
+  animation: flowing-light 3s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes flowing-light {
+  0% {
+      background-position: 0% 50%;
+  }
+  100% {
+      background-position: 200% 50%;
+  }
+}
+
+#leetcode{
+  background-color: #0b131c;
+  opacity: 90%;
+  height:500px;
+}
+
+#Github{
+  background-color: #0b131c;
+  opacity: 90%;
+  height:1000px;
+}
+
+#yellowgit{
+  background-color: #0b131c;
+  opacity: 90%;
+}
+
+/* Container for the LeetCode Stats Image */
+.leet-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;       /* Responsive width */
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;      /* Keeps the shimmer effect within the border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional shadow */
+  transform: translateX(500px);
+}
+
+/* LeetCode Stats Image Styling */
+.leetcod-stats {
+  width: 100%;           /* Ensure image takes full width */
+  height: auto;          /* Keep original aspect ratio */
+  display: block;        /* Block display to avoid extra spacing */
+}
+
+/* Silver Shimmering Effect */
+.leet-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(90deg, 
+      rgba(255, 255, 255, 0) 0%, 
+      rgba(255, 255, 255, 0.5) 50%, 
+      rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 200%;
+  animation: flowing-light 3s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Keyframes for the Shimmering Effect */
+@keyframes flowing-light {
+  0% {
+      background-position: 0% 50%;
+  }
+  100% {
+      background-position: 200% 50%;
+  }
+}
+
+#gitstat{
+  margin-left:50px;
+}
+
+.skills-carousel{
+  height:700px;
+}
+
+.flower{
+  width:100%;
+}
+
+#bar1{
+  transform: translateY(12px);
+}
+
+#bar3{
+  transform: translateY(12px);
+}
+
+#bar4{
+  transform: translateY(22px);
+}
+
+#bar5{
+  transform: translateY(-12px);
+}
+
+#bar6{
+  transform: translateY(12px);
+}
+
+#hopo{
+  background-color: #0b131c;
+  opacity: 90%;
+}
+
+
+#aboutme{
+  text-align: center;
+  background-color: #0b131c;
+  color:white;
+  opacity: 90%;
+  line-height: 1.5;
+}
+
+#cat{
+  transform: translateY(25px);
+}
+
+#contact{
+  opacity: 90%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
